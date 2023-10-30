@@ -1,6 +1,8 @@
+using System;
 using extOSC;
+using Remote;
 using UnityEngine;
-using UnityEngine.Serialization;
+
 
 namespace OSC
 {
@@ -9,17 +11,39 @@ namespace OSC
         private OSCTransmitter _oscTransmitter;
 
         [SerializeField] private string address = "/message/transform";
-        [SerializeField] private string oscTransmitterRemoteHost;
 
-        void Start()
+        private void Start()
         {
-            _oscTransmitter = gameObject.AddComponent<OSCTransmitter>();
-            _oscTransmitter.RemoteHost = oscTransmitterRemoteHost;
+            BindServerConnector();
+        }
+
+        private void BindServerConnector()
+        {
+            var serverConnector = FindObjectOfType<ServerConnector>();
+            serverConnector.SetOSCTransFormSender(this);
+        }
+
+
+        public void InitialOSCTransmitter()
+        {
+            _oscTransmitter = GetComponent<OSCTransmitter>();
+            if (_oscTransmitter == null)
+            {
+                _oscTransmitter = gameObject.AddComponent<OSCTransmitter>();
+            }
+
+            _oscTransmitter.RemoteHost = Env.IPAddress;
             _oscTransmitter.RemotePort = 7000;
         }
 
-        void Update()
+
+        public void OnLogic()
         {
+            if (_oscTransmitter == null)
+            {
+                return;
+            }
+
             var rotation = transform.rotation;
             var oscMessage = new OSCMessage(address);
             oscMessage.AddValue(OSCValue.Array(
