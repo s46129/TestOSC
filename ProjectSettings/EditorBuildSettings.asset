@@ -6,10 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Remote.unity
+    path: Assets/Scenes/RemoteSender.unity
     guid: b0f3db5907e2c43998c9a3d9c0f805a9
   - enabled: 0
-    path: Assets/Scenes/FaceTracking.unity
+    path: Assets/Scenes/Test_FaceTracking.unity
     guid: 24645e48a01fb4ce88799c23976e95e3
   m_configObjects:
     UnityEditor.XR.ARKit.ARKitSettings: {fileID: 11400000, guid: 1681f0cd7086b48aa86a6b410ce35820, type: 2}
