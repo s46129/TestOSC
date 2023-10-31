@@ -34,6 +34,8 @@ namespace OSC
 
             _oscTransmitter.RemoteHost = Env.IPAddress;
             _oscTransmitter.RemotePort = 7000;
+
+            Debug.Log($"Initial Transmitter success : {Env.IPAddress}");
         }
 
 

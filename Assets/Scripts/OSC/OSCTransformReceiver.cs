@@ -1,17 +1,14 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using extOSC;
 using TMPro;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
-using UnityEngine.Serialization;
+
 
 namespace OSC
 {
     public class OSCTransformReceiver : MonoBehaviour
     {
-        [SerializeField] private OSCReceiver oscReceiver;
+        private OSCReceiver _oscReceiver;
 
         [SerializeField] private string address = "/message/transform";
         [SerializeField] private TextMeshProUGUI textMeshProUGUI;
@@ -19,17 +16,17 @@ namespace OSC
 
         IEnumerator Start()
         {
-            if (oscReceiver == null)
+            if (_oscReceiver == null)
             {
-                oscReceiver = gameObject.AddComponent<OSCReceiver>();
+                _oscReceiver = gameObject.AddComponent<OSCReceiver>();
             }
 
-            oscReceiver.LocalPort = 7000;
-            oscReceiver.Bind(address, MessageReceiver);
+            _oscReceiver.LocalPort = 7000;
+            _oscReceiver.Bind(address, MessageReceiver);
             textMeshProUGUI.text = "Getting IP Address.";
             yield
-                return new WaitUntil(() => string.Equals(oscReceiver.LocalHost, "0.0.0.0"));
-            textMeshProUGUI.text = $"{OSCUtilities.GetLocalHost()} : {oscReceiver.LocalPort}";
+                return new WaitUntil(() => string.Equals(_oscReceiver.LocalHost, "0.0.0.0"));
+            textMeshProUGUI.text = $"{OSCUtilities.GetLocalHost()} : {_oscReceiver.LocalPort}";
         }
 
         private void MessageReceiver(OSCMessage arg0)
