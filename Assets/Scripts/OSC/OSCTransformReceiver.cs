@@ -2,6 +2,7 @@ using System.Collections;
 using extOSC;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 
 namespace OSC
@@ -12,7 +13,7 @@ namespace OSC
 
         [SerializeField] private string address = "/message/transform";
         [SerializeField] private TextMeshProUGUI textMeshProUGUI;
-
+        [SerializeField] private SkinnedMeshRenderer skinnedMeshRenderer;
 
         IEnumerator Start()
         {
@@ -22,7 +23,11 @@ namespace OSC
             }
 
             _oscReceiver.LocalPort = 7000;
-            _oscReceiver.Bind(address, MessageReceiver);
+            for (int i = 0; i < skinnedMeshRenderer.sharedMesh.blendShapeCount; i++)
+            {
+                _oscReceiver.Bind(address + i, MessageReceiver);
+            }
+
             textMeshProUGUI.text = "Getting IP Address.";
             yield
                 return new WaitUntil(() => string.Equals(_oscReceiver.LocalHost, "0.0.0.0"));
@@ -31,13 +36,20 @@ namespace OSC
 
         private void MessageReceiver(OSCMessage arg0)
         {
-            arg0.ToArray(out var oscValues);
-            transform.rotation = new Quaternion(
-                oscValues[0].FloatValue,
-                oscValues[1].FloatValue,
-                oscValues[2].FloatValue,
-                oscValues[3].FloatValue
-            );
+            string key = arg0.Address.Replace(address, "");
+            var tryParse = int.TryParse(key, out int keyNum);
+
+            if (tryParse == false)
+            {
+                Debug.LogWarning("Fail to parse : " + key);
+                return;
+            }
+
+            var parseValue = arg0.ToFloat(out var oscValues);
+            if (parseValue)
+            {
+                skinnedMeshRenderer.SetBlendShapeWeight(keyNum, oscValues);
+            }
         }
     }
 }

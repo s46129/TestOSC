@@ -1,8 +1,6 @@
-using System;
 using OSC;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Remote
@@ -36,14 +34,5 @@ namespace Remote
             _oscTransformSender.InitialOSCTransmitter();
         }
 
-        private void Update()
-        {
-            if (_oscTransformSender == null)
-            {
-                return;
-            }
-
-            _oscTransformSender.OnLogic();
-        }
     }
 }

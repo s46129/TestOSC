@@ -1,4 +1,4 @@
-using System;
+using System.Collections.Generic;
 using extOSC;
 using Remote;
 using UnityEngine;
@@ -38,22 +38,15 @@ namespace OSC
             Debug.Log($"Initial Transmitter success : {Env.IPAddress}");
         }
 
-
-        public void OnLogic()
+        public void OnBlendShapeUpdate(Dictionary<int, float> rawData)
         {
-            if (_oscTransmitter == null)
+            foreach (var valuePair in rawData)
             {
-                return;
+                var addressPath = address + valuePair.Key;
+                var oscMessage = new OSCMessage(addressPath);
+                oscMessage.AddValue(OSCValue.Float(valuePair.Value));
+                _oscTransmitter.Send(oscMessage);
             }
-
-            var rotation = transform.rotation;
-            var oscMessage = new OSCMessage(address);
-            oscMessage.AddValue(OSCValue.Array(
-                OSCValue.Float(rotation.x),
-                OSCValue.Float(rotation.y),
-                OSCValue.Float(rotation.z),
-                OSCValue.Float(rotation.w)));
-            _oscTransmitter.Send(oscMessage);
         }
     }
 }
