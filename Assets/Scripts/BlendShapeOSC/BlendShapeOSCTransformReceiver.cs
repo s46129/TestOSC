@@ -2,12 +2,10 @@ using System.Collections;
 using extOSC;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-
-namespace OSC
+namespace BlendShapeOSC
 {
-    public class OSCTransformReceiver : MonoBehaviour
+    public class BlendShapeOSCTransformReceiver : MonoBehaviour
     {
         private OSCReceiver _oscReceiver;
 

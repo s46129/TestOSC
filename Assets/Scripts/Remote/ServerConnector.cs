@@ -1,4 +1,4 @@
-using OSC;
+using BlendShapeOSC;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,7 +7,7 @@ namespace Remote
 {
     public class ServerConnector : MonoBehaviour
     {
-        private OscTransformSender _oscTransformSender;
+        private BlendShapeOSCTransformSender _blendShapeOscTransformSender;
         [SerializeField] private Button initialButton;
         [SerializeField] private TMP_InputField ipAddressInputField;
         [SerializeField] private TMP_InputField remotePortInputField;
@@ -19,9 +19,9 @@ namespace Remote
             remotePortInputField.text = Env.RemotePort;
         }
 
-        public void SetOSCTransFormSender(OscTransformSender oscTransformSender)
+        public void SetOSCTransFormSender(BlendShapeOSCTransformSender blendShapeOscTransformSender)
         {
-            _oscTransformSender = oscTransformSender;
+            _blendShapeOscTransformSender = blendShapeOscTransformSender;
             initialButton.interactable = true;
         }
 
@@ -29,12 +29,12 @@ namespace Remote
         {
             Env.IPAddress = ipAddressInputField.text;
             Env.RemotePort = remotePortInputField.text;
-            if (_oscTransformSender == null)
+            if (_blendShapeOscTransformSender == null)
             {
                 return;
             }
 
-            _oscTransformSender.InitialOSCTransmitter();
+            _blendShapeOscTransformSender.InitialOSCTransmitter();
         }
     }
 }

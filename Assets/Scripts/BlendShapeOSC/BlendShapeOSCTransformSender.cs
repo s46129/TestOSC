@@ -3,10 +3,9 @@ using extOSC;
 using Remote;
 using UnityEngine;
 
-
-namespace OSC
+namespace BlendShapeOSC
 {
-    public class OscTransformSender : MonoBehaviour
+    public class BlendShapeOSCTransformSender : MonoBehaviour
     {
         private OSCTransmitter _oscTransmitter;
 

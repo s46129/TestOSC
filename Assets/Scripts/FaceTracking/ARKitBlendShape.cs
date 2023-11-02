@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using OSC;
+using BlendShapeOSC;
 using Unity.Collections;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -18,7 +18,7 @@ namespace FaceTracking
     public class ARKitBlendShape : MonoBehaviour
     {
         [SerializeField] float m_CoefficientScale = 100.0f;
-        [SerializeField] private OscTransformSender oscTransformSender;
+        [FormerlySerializedAs("oscTransformSender")] [SerializeField] private BlendShapeOSCTransformSender blendShapeOscTransformSender;
         private Dictionary<int, float> rawData = new Dictionary<int, float>();
 
         public float coefficientScale

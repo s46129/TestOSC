@@ -3295,7 +3295,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4870298083977458172}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ad59b34f70b146f9b9aff8849a1a41c, type: 3}
+  m_Script: {fileID: 11500000, guid: 1390c0cb0f4391f4e8539fe72c370b84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   address: /message/Character0/FaceBlendShape
@@ -3325,7 +3325,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_CoefficientScale: 100
-  oscTransformSender: {fileID: 602605383052961100}
+  blendShapeOscTransformSender: {fileID: 602605383052961100}
   m_SkinnedMeshRenderer: {fileID: 5534712378440153962}
 --- !u!1 &4899834508256874688
 GameObject:
