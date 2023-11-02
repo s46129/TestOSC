@@ -544,6 +544,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialButton: {fileID: 1239822374}
   ipAddressInputField: {fileID: 459761586}
+  remotePortInputField: {fileID: 1543455747}
 --- !u!4 &473821998
 Transform:
   m_ObjectHideFlags: 0
