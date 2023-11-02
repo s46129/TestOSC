@@ -1,11 +1,12 @@
 using System.Collections.Generic;
+using AudioOSC;
 using extOSC;
 using Remote;
 using UnityEngine;
 
 namespace BlendShapeOSC
 {
-    public class BlendShapeOSCTransformSender : MonoBehaviour
+    public class BlendShapeOscTransformSender : FindServerConnectorOSCSenderBase
     {
         private OSCTransmitter _oscTransmitter;
 
@@ -23,7 +24,7 @@ namespace BlendShapeOSC
         }
 
 
-        public void InitialOSCTransmitter()
+        public override void InitialOSCTransmitter()
         {
             _oscTransmitter = GetComponent<OSCTransmitter>();
             if (_oscTransmitter == null)
