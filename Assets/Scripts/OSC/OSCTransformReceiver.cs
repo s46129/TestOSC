@@ -11,7 +11,7 @@ namespace OSC
     {
         private OSCReceiver _oscReceiver;
 
-        [SerializeField] private string address = "/message/transform";
+        [SerializeField] private string address = "/message/Character0/FaceBlendShape";
         [SerializeField] private TextMeshProUGUI textMeshProUGUI;
         [SerializeField] private SkinnedMeshRenderer skinnedMeshRenderer;
 
@@ -22,7 +22,7 @@ namespace OSC
                 _oscReceiver = gameObject.AddComponent<OSCReceiver>();
             }
 
-            _oscReceiver.LocalPort = 7000;
+            _oscReceiver.LocalPort = int.Parse(Env.RemotePort);
             for (int i = 0; i < skinnedMeshRenderer.sharedMesh.blendShapeCount; i++)
             {
                 _oscReceiver.Bind(address + i, MessageReceiver);

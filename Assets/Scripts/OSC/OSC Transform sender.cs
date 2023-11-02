@@ -10,7 +10,7 @@ namespace OSC
     {
         private OSCTransmitter _oscTransmitter;
 
-        [SerializeField] private string address = "/message/transform";
+        [SerializeField] private string address = "/message/Character0/FaceBlendShape";
 
         private void Start()
         {
@@ -33,7 +33,7 @@ namespace OSC
             }
 
             _oscTransmitter.RemoteHost = Env.IPAddress;
-            _oscTransmitter.RemotePort = 7000;
+            _oscTransmitter.RemotePort = int.Parse(Env.RemotePort);
 
             Debug.Log($"Initial Transmitter success : {Env.IPAddress}");
         }

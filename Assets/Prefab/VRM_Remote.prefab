@@ -3298,7 +3298,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ad59b34f70b146f9b9aff8849a1a41c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  address: /message/transform
+  address: /message/Character0/FaceBlendShape
 --- !u!114 &6347497639948452820
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -38,7 +38,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2535568699990942455, guid: 7e08fdc1208834788bf8be1363549920, type: 3}
       propertyPath: m_Name
-      value: VRM_Receiver Variant
+      value: VRM_Receiver
       objectReference: {fileID: 0}
     - target: {fileID: 3200334838545721441, guid: 7e08fdc1208834788bf8be1363549920, type: 3}
       propertyPath: m_DirtyAABB
@@ -190,6 +190,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38b080258f72b42058ff6c3866147089, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  address: /message/transform
+  address: /message/Character0/FaceBlendShape
   textMeshProUGUI: {fileID: 0}
   skinnedMeshRenderer: {fileID: 7220565382702566566}
